@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آل شبلان القحطاني - متجر إلكتروني</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, #1e8449 0%, #27ae60 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .top-bar {
+            background: rgba(0,0,0,0.1);
+            padding: 0.5rem 0;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .language-selector {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .language-selector a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .language-selector a:hover,
+        .language-selector a.active {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .user-actions a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .user-actions a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .main-header {
+            padding: 1rem 0;
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 2rem;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 0.75rem 3rem 0.75rem 1rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .search-bar button {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .quick-actions a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .quick-actions a:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        .quick-actions i {
+            font-size: 1.5rem;
+        }
+
+        .quick-actions span {
+            font-size: 0.8rem;
+        }
+
+        .badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+        }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0;
+        }
+
+        .nav li {
+            position: relative;
+        }
+
+        .nav a {
+            display: block;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav a:hover,
+        .nav a.active {
+            color: #1e8449;
+            border-bottom-color: #1e8449;
+            background: #f8f9fa;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e8449 0%, #27ae60 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .delivery-info {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Featured Products */
+        .featured-products {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: #1e8449;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .product-image {
+            height: 200px;
+            background: linear-gradient(45deg, #f1f2f6, #ddd);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #666;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #1e8449;
+        }
+
+        .product-info p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        /* Brands Section */
+        .brands {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .brand-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .brand-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .brand-card h4 {
+            color: #1e8449;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1e8449;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #ecf0f1;
+        }
+
+        .footer-section p,
+        .footer-section li {
+            margin-bottom: 0.5rem;
+            color: #bdc3c7;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #27ae60;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            text-align: center;
+            color: #ecf0f1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-header .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .search-bar {
+                margin: 0;
+                max-width: none;
+            }
+
+            .nav ul {
+                justify-content: center;
+            }
+
+            .nav a {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
+            }
+
+            .brands-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .product-card {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .product-card:nth-child(2) { animation-delay: 0.1s; }
+        .product-card:nth-child(3) { animation-delay: 0.2s; }
+        .product-card:nth-child(4) { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="container">
+                <div class="language-selector">
+                    <a href="#" class="active">العربية</a>
+                    <a href="#">English</a>
+                </div>
+                <div class="user-actions">
+                    <a href="#"><i class="fas fa-user"></i> تسجيل الدخول</a>
+                    <a href="#"><i class="fas fa-user-plus"></i> إنشاء حساب</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Header -->
+        <div class="main-header">
+            <div class="container">
+                <div class="logo">
+                    <img src="C:\Users\Muath\OneDrive\Desktop\ال شبلان\ال شبلان لوقو.jpg" alt="شعار آل شبلان القحطاني" onerror="this.style.display='none'">
+                    <h1>آل شبلان القحطاني</h1>
+                </div>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="ابحث عن المنتجات...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+
+                <div class="quick-actions">
+                    <a href="#">
+                        <i class="fas fa-heart"></i>
+                        <span>المفضلة</span>
+                        <span class="badge">3</span>
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>السلة</span>
+                        <span class="badge">2</span>
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-list-alt"></i>
+                        <span>الطلبات</span>
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-user"></i>
+                        <span>البروفايل</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <ul>
+                <li><a href="#" class="active">جميع المنتجات</a></li>
+                <li><a href="#brands">تسوق بحسب البراند</a></li>
+                <li><a href="#">مستلزمات التنظيف</a></li>
+                <li><a href="#">القهوة والشاي</a></li>
+                <li><a href="#">السناكات</a></li>
+                <li><a href="#">منتجات العناية</a></li>
+                <li><a href="#">المشروبات</a></li>
+                <li><a href="#">مقاضي</a></li>
+                <li><a href="#">الاحتياجات اليومية</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px;">
+                    <h2>مرحباً بكم في متجر آل شبلان القحطاني</h2>
+                    <p>تسوق المنتجات الاستهلاكية اليومية بأفضل الأسعار وأعلى جودة</p>
+                    <div class="delivery-info">
+                        <i class="fas fa-truck"></i>
+                        توصيل مجاني من الساعة 8 صباحاً حتى 8 مساءً إلى باب المنزل
+                    </div>
+                </div>
+                <div style="flex: 1; min-width: 300px; text-align: center;">
+                    <img src="C:\Users\Muath\OneDrive\Desktop\ال شبلان\Gemini_Generated_Image_bhh31hbhh31hbhh3.png" alt="صورة متجر آل شبلان القحطاني" style="max-width: 100%; height: auto; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 3px solid white;" onerror="this.style.display='none'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+        <h2 class="section-title">المنتجات المميزة</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-spray-can"></i>
+                </div>
+                <div class="product-info">
+                    <h3>منظف متعدد الاستخدامات</h3>
+                    <p>منظف قوي وفعال لجميع الأسطح</p>
+                    <div class="product-price">25.99 ريال</div>
+                    <button class="btn">أضف إلى السلة</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-coffee"></i>
+                </div>
+                <div class="product-info">
+                    <h3>قهوة عربية فاخرة</h3>
+                    <p>قهوة عربية أصيلة بنكهة مميزة</p>
+                    <div class="product-price">45.50 ريال</div>
+                    <button class="btn">أضف إلى السلة</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-cookie-bite"></i>
+                </div>
+                <div class="product-info">
+                    <h3>بسكويت شوكولاتة</h3>
+                    <p>بسكويت لذيذ بطعم الشوكولاتة الغنية</p>
+                    <div class="product-price">12.75 ريال</div>
+                    <button class="btn">أضف إلى السلة</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-pump-soap"></i>
+                </div>
+                <div class="product-info">
+                    <h3>صابون سائل للأيدي</h3>
+                    <p>صابون سائل مرطب ومعقم للأيدي</p>
+                    <div class="product-price">18.25 ريال</div>
+                    <button class="btn">أضف إلى السلة</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section class="brands" id="brands">
+        <h2 class="section-title">تسوق بحسب البراند</h2>
+        <div class="brands-grid">
+            <div class="brand-card">
+                <h4>سنوفا</h4>
+            </div>
+            <div class="brand-card">
+                <h4>سيروب</h4>
+            </div>
+            <div class="brand-card">
+                <h4>فام</h4>
+            </div>
+            <div class="brand-card">
+                <h4>أورلاندا</h4>
+            </div>
+            <div class="brand-card">
+                <h4>الوزة</h4>
+            </div>
+            <div class="brand-card">
+                <h4>النخبة</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                    <img src="C:\Users\Muath\OneDrive\Desktop\ال شبلان\ال شبلان لوقو.jpg" alt="شعار آل شبلان القحطاني" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid white;" onerror="this.style.display='none'">
+                    <h3 style="margin: 0;">آل شبلان القحطاني</h3>
+                </div>
+                <p>متجر إلكتروني سعودي متخصص في بيع المنتجات الاستهلاكية اليومية بأفضل الأسعار وأعلى جودة.</p>
+                <p><i class="fas fa-phone"></i> +966592200419</p>
+                <p><i class="fas fa-envelope"></i> Muath.M.Alruwaili@gmail.com</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>خدمة العملاء</h3>
+                <ul>
+                    <li><a href="#">اتصل بنا</a></li>
+                    <li><a href="#">الأسئلة الشائعة</a></li>
+                    <li><a href="#">سياسة الإرجاع</a></li>
+                    <li><a href="#">سياسة الخصوصية</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>معلومات التوصيل</h3>
+                <ul>
+                    <li>ساعات التوصيل: 8 صباحاً - 8 مساءً</li>
+                    <li>التوصيل إلى باب المنزل</li>
+                    <li>توصيل مجاني للطلبات فوق 100 ريال</li>
+                    <li>دفع عند الاستلام متاح</li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>طرق الدفع</h3>
+                <p>نقبل جميع طرق الدفع الآمنة:</p>
+                <ul>
+                    <li><i class="fas fa-credit-card"></i> البطاقات الائتمانية</li>
+                    <li><i class="fas fa-money-bill"></i> الدفع عند الاستلام</li>
+                    <li><i class="fas fa-mobile-alt"></i> المحافظ الرقمية</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 آل شبلان القحطاني. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple cart functionality
+        let cart = [];
+        let favorites = [];
+
+        // Add to cart functionality
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const productCard = this.closest('.product-card');
+                const productName = productCard.querySelector('h3').textContent;
+                const productPrice = productCard.querySelector('.product-price').textContent;
+                
+                cart.push({
+                    name: productName,
+                    price: productPrice
+                });
+                
+                updateCartBadge();
+                showNotification(`تم إضافة ${productName} إلى السلة`);
+            });
+        });
+
+        // Update cart badge
+        function updateCartBadge() {
+            const cartBadge = document.querySelector('.quick-actions a[href="#"] .badge');
+            if (cartBadge) {
+                cartBadge.textContent = cart.length;
+            }
+        }
+
+        // Show notification
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #27ae60;
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                z-index: 1000;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                animation: slideIn 0.3s ease-out;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease-out';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Add CSS for notification animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Search functionality
+        document.querySelector('.search-bar button').addEventListener('click', function(e) {
+            e.preventDefault();
+            const searchTerm = document.querySelector('.search-bar input').value;
+            if (searchTerm.trim()) {
+                showNotification(`البحث عن: ${searchTerm}`);
+            }
+        });
+
+        // Search on Enter key
+        document.querySelector('.search-bar input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const searchTerm = this.value;
+                if (searchTerm.trim()) {
+                    showNotification(`البحث عن: ${searchTerm}`);
+                }
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Language switcher
+        document.querySelectorAll('.language-selector a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.language-selector a').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                
+                if (this.textContent === 'English') {
+                    showNotification('Language switched to English');
+                } else {
+                    showNotification('تم تغيير اللغة إلى العربية');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
